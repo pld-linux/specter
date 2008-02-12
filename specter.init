@@ -57,12 +57,20 @@ case "$1" in
 	status specter
 	exit $?
 	;;
+  reload)
+	# TODO: implement
+  	exit 3
+	;;
+  flush-logs)
+	# TODO: implement
+  	exit 3
+	;;
   restart|force-reload)
 	stop
 	start
 	;;
   *)
-	msg_usage "$0 {start|stop|restart|force-reload|status}"
+	msg_usage "$0 {start|stop|restart|force-reload|reload|flush-logs|status}"
 	exit 3
 esac
 
