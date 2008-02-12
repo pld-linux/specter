@@ -2,13 +2,11 @@
 #
 # specter		Starts specter.
 #
-# chkconfig:	2345 91 91
+# chkconfig:	2345 91 09
 # description:	specter is the userland packect logger for iptables ULOG target.
 
 # Source function library
 . /etc/rc.d/init.d/functions
-
-[ -f /usr/sbin/specter ] || exit 0
 
 # Get service config
 if [ -f /etc/sysconfig/specter ]; then
@@ -16,7 +14,7 @@ if [ -f /etc/sysconfig/specter ]; then
 fi
 
 CONFIGS=/etc/specter.conf
-if [ "${MULTIPLE}" == "YES" ]; then
+if is_yes "${MULTIPLE}"; then
 	CONFIGS="$CONFIGS /etc/specter/*.conf"
 fi
 
