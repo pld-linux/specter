@@ -1,6 +1,6 @@
 /var/log/specter*
 {
 	postrotate
-	/sbin/service specter reload >/dev/null 2>&1
+	/sbin/service specter flush-logs >/dev/null 2>&1
 	endscript
 }
