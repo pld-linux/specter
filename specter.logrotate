@@ -1,0 +1,5 @@
+/var/log/specter* {
+        postrotate
+		/etc/rc.d/init.d/specter reload >/dev/null 2>&1
+        endscript
+}
