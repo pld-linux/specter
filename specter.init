@@ -15,15 +15,12 @@ if [ -f /etc/sysconfig/specter ]; then
 	. /etc/sysconfig/specter
 fi
 
-RETVAL=0
-# See how we were called.
 CONFIGS=/etc/specter.conf
 if [ "${MULTIPLE}" == "YES" ]; then
 	CONFIGS="$CONFIGS /etc/specter/*.conf"
 fi
 
-case "$1" in
-  start)
+start() {
 	# Check if the service is already running?
 	for i in $CONFIGS; do
 		bname=$(basename $i .conf)
@@ -37,8 +34,9 @@ case "$1" in
 		fi
 		touch /var/lock/subsys/specter
 	done
-	;;
-  stop)
+}
+
+stop() {
 	if [ -f /var/lock/subsys/specter ]; then
 		msg_stopping specter
 		killproc specter
@@ -46,15 +44,24 @@ case "$1" in
 	else
 		msg_not_running specter
 	fi
+}
+
+RETVAL=0
+# See how we were called.
+case "$1" in
+  start)
+  	start
+	;;
+  stop)
+  	stop
 	;;
   status)
 	status specter
 	exit $?
 	;;
   restart|force-reload)
-	$0 stop
-	$0 start
-	exit $?
+	stop
+	start
 	;;
   *)
 	msg_usage "$0 {start|stop|restart|force-reload|status}"
