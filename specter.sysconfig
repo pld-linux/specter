@@ -1,5 +1,5 @@
-# Nice level for ulogd
+# Nice level for specter
 SERVICE_RUN_NICE_LEVEL="-1"
 
-# use "yes" when you want multiple specter instantions in /etc/ulog/*.conf
+# use "yes" when you want multiple specter instantions in /etc/specter/*.conf
 MULTIPLE="no"
