@@ -10,6 +10,7 @@ Source0:	http://joker.linuxstuff.pl/specter/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Source3:	%{name}.logrotate
+Patch0:		%{name}-limits.patch
 URL:		http://joker.linuxstuff.pl/specter/
 BuildRequires:	mysql-devel
 BuildRequires:	postgresql-devel
@@ -64,6 +65,7 @@ Wtyczka PostgreSQL dla specter.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \

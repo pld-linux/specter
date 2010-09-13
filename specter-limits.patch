@@ -1,0 +1,10 @@
+--- specter-1.4/include/specter/specter.h~	2005-07-03 13:58:17.000000000 +0200
++++ specter-1.4/include/specter/specter.h	2010-09-13 21:49:35.377743133 +0200
+@@ -12,6 +12,7 @@
+ #ifndef _SPECTER_H
+ #define _SPECTER_H
+ 
++#include <limits.h>
+ #include <sys/socket.h>
+ #include <net/if.h>
+ #include <linux/netfilter_ipv4/ipt_ULOG.h>
